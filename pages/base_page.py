@@ -3,7 +3,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait as Wait
 
 from locators.general_locators import GeneralLocators
-from data import script
+from data import Scripts
 
 
 class BasePage:
@@ -17,7 +17,7 @@ class BasePage:
 
     def find_elements(self, locator):
         Wait(self.driver, 10).until(EC.presence_of_all_elements_located(locator))
-        return self.driver.find_element(locator)
+        return self.driver.find_elements(*locator)
 
     def click_element(self, locator):
         Wait(self.driver, 10).until(EC.element_to_be_clickable(locator)).click()
@@ -53,5 +53,7 @@ class BasePage:
             EC.element_to_be_clickable(locator1))
         drop = Wait(self.driver, 20).until(
             EC.element_to_be_clickable(locator2))
-        self.driver.execute_script(script, drag, drop)
+        self.driver.execute_script(Scripts.DRAG_AND_DROP_SCRIPT, drag, drop)
 
+    def open_url(self, url):
+        self.driver.get(url)

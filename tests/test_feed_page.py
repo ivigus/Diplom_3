@@ -1,6 +1,6 @@
 import allure
 
-from data import BASE_URL, FEED
+from data import URLs
 from locators.feed_page_locators import FeedPageLocators
 from pages.feed_page import FeedPage
 
@@ -18,7 +18,7 @@ class TestFeedPage:
         browser = FeedPage(driver)
         browser.login_and_make_an_order()
         order_number = browser.get_track_num_order()
-        driver.get(f'{BASE_URL}{FEED}')
+        browser.open_url(f'{URLs.BASE_URL}{URLs.FEED}')
         assert order_number == browser.get_track_num_order_from_list()
 
     @allure.title('при создании нового заказа счётчик Выполнено за всё время увеличивается')
