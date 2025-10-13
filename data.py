@@ -1,5 +1,5 @@
 class URLs:
-    BASE_URL = 'https://stellarburgers.nomoreparties.site/'
+    BASE_URL = 'https://stellarburgers.education-services.ru/'
     FORGOT_PASSWORD_PAGE = 'forgot-password'
     RESET_PASSWORD_PAGE = 'reset-password'
     FEED = 'feed'
